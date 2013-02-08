@@ -1,12 +1,11 @@
 package tests;
 
 import chord.*;
-import interfaces.*;
 
 /**
  * Tests that the group can form properly when peers do not get join
- * requests until they are connected themeselves. Also tests that
- * objects can be stored and retrived, when there are due time between
+ * requests until they are connected themselves. Also tests that
+ * objects can be stored and retrieved, when there are due time between
  * the calls. The details are there to avoid errors due to bad
  * handling of concurrency.
  */
@@ -28,7 +27,7 @@ public class ChordObjectStorageTest1 {
         }
 
         for (int i=1; i<10; i++) {
-            server[i] = new ChordObjectStorageImpl(-1);	    
+            server[i] = new ChordObjectStorageImpl(-1);
             server[i].joinGroup(server[i-1].getChordName(),40000+i);
             while (!server[0].isConnected()) {
                 try {

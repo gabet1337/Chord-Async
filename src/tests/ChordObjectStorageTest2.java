@@ -3,7 +3,7 @@ package tests;
 import chord.*;
 /**
  * Tests that the group can form properly when peers get join requests
- * before they are connected themeselves. Also tests that objects can
+ * before they are connected themselves. Also tests that objects can
  * be stored and gotten simultaneously.
  */
 

@@ -67,6 +67,27 @@ public interface ChordObjectStorage {
      * network updated appropriately.
      */
     public void leaveGroup();
+    
+    /**
+     * Returns the current successor of this peer. In a singleton
+     * group, the successor is this instance itself.
+     */
+    public InetSocketAddress succ();
+
+    /**
+     * Returns the current predecessor of this peer. In a
+     * singleton group, the predecessor is this instance itself.
+     */
+    public InetSocketAddress pred();
+
+    /**
+     * Returns the name of the peer who is currently responsible
+     * for a given key, according to the topology of the Chord
+     * network.
+     *
+     * @param key The key for which we seek the responsible peer. Must be non-negative.
+     */
+    public InetSocketAddress lookup(int key);
 
     /**
      * Stores the object in the Chord network. The call should be

@@ -1,6 +1,7 @@
 package services;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.net.*;
 import java.nio.ByteBuffer;
 
 public class ChordHelpers {
@@ -91,6 +92,23 @@ public class ChordHelpers {
         resAsLong = resAsLong % twoToThe31;
         int resAsInt = (int)resAsLong;
         return resAsInt;
+    }
+    
+    /**
+     * Computes the name of this peer by resolving the local host name
+     * and adding the current portname.
+     */
+    public static InetSocketAddress getMyName(int port) {
+    try {
+        InetAddress localhost = InetAddress.getLocalHost();
+        InetSocketAddress name = new InetSocketAddress(localhost, port);
+        return name;
+    } catch (UnknownHostException e) {
+        System.err.println("Cannot resolve the Internet address " + 
+                   "of the local host.");
+        System.err.println(e);
+    }
+    return null;
     }
 
 }
