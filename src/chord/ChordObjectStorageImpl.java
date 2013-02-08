@@ -104,7 +104,13 @@ public class ChordObjectStorageImpl extends DDistThread implements ChordObjectSt
         return null;
     }
 
-    
+    /*
+     * We should initially make sure we are connected, and then go to an
+     * endless loop receiving incoming connections and handle them
+     * appropriately.
+     * We need some sort of transaction mechanism, such that we are able to 
+     * abort whatever we are doing in case of a deadlock.
+     */
     public void run() {
         
     }
